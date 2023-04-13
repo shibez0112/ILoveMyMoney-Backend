@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { celebrate, Joi } = require("celebrate");
 const asyncHandler = require("express-async-handler");
-const { signUp, signIn } = require("../services/authServices");
+const { signUp, signIn } = require("../services/auth");
 
 router.post(
   "/signup",

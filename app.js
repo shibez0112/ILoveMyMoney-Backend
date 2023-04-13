@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const dbConnect = require("./config/DBConnect");
 // ------------------------------------------
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
-const userRouter = require("./api/users");
+const userRouter = require("./api/user");
 const authRouter = require("./api/auth");
 // ------------------------------------------
 const app = express();
@@ -21,7 +21,7 @@ dbConnect.connect(function (err) {
   console.log("DB Connected!");
 });
 
-// app.use("/api/user", userRouter);
+app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 
 app.use(notFound);

@@ -10,13 +10,11 @@ const getTokenFromHeader = (req) => {
   }
 };
 
-const isAuth = (req, res, next) => {
+const isAuth = async (req, res, next) => {
   const token = getTokenFromHeader(req);
-  try {
-    jwt.verify(token, secret_key, async (err, decoded) => {
-      if (err) {
-        throw new Error("There 's something wrong with token");
-      }
+  if (token){
+    try {
+      const decoded = jwt.verify(token, secret_key);
       const sql = "SELECT id, name, email FROM users WHERE id = $1";
       const values = [decoded.data.id];
       const client = await pool.connect();
@@ -28,9 +26,12 @@ const isAuth = (req, res, next) => {
         req.user = result.rows[0];
         return next();
       }
-    });
-  } catch (error) {
-    throw new Error(error);
+    } catch (error) {
+      throw new Error("Invalid token");
+    }
+  }
+  else {
+    throw new Error("No Token attached")
   }
 };
 

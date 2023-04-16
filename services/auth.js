@@ -42,7 +42,7 @@ const signIn = async (data) => {
       throw new Error("Invalid Credentials");
     }
   } catch (error) {
-    throw new Error(error);
+    throw new Error("Invalid Credentials");
   }
 };
 

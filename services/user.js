@@ -46,10 +46,11 @@ const updateUser = async (id, data) => {
     const client = await pool.connect();
     const res = await client.query(sql, value);
     client.release();
-    return `Sucessfully delete user with id: ${id}`;
+    return `Sucessfully update user with id: ${id}`;
   } catch (error) {
     throw new Error(error);
   }
 };
+
 
 module.exports = { getAllUsers, getUserById, deleteUser, updateUser };

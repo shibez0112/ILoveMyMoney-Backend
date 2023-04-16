@@ -26,6 +26,7 @@ CREATE TABLE transactions (
     type VARCHAR(10),
     category_id SERIAL,
     wallet_id SERIAL,
+    timestamps TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories(id),
     FOREIGN KEY (wallet_id) REFERENCES wallets(id)
 );

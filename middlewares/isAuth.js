@@ -27,11 +27,11 @@ const isAuth = async (req, res, next) => {
         return next();
       }
     } catch (error) {
-      throw new Error("Invalid token");
+      res.status(401).end("Invalid token");
     }
   }
   else {
-    throw new Error("No Token attached")
+    res.status(401).end("No Token attached")
   }
 };
 

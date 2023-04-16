@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const asyncHandler = require("express-async-handler");
-const { isAuth, isAdmin } = require("../middlewares/isAuth");
+const { isAuth } = require("../middlewares/isAuth");
 const {
   getWalletById,
   addNewWallet,
@@ -25,7 +25,6 @@ router.post(
     try {
       const walletDTO = req.body;
       const user_id = req.user.id;
-      console.log(req.user);
 
       const newWallet = await addNewWallet(walletDTO, user_id);
 

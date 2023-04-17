@@ -9,6 +9,7 @@ const userRouter = require("./api/user");
 const authRouter = require("./api/auth");
 const walletRouter = require("./api/wallet");
 const catRouter = require("./api/category");
+const transRouter = require("./api/transaction")
 // ------------------------------------------
 const app = express();
 const port = process.env.PORT;
@@ -27,6 +28,7 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/wallet", walletRouter);
 app.use("/api/category", catRouter);
+app.use("/api/transaction", transRouter);
 
 app.use(errorHandler);
 app.use(notFound);

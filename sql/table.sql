@@ -23,10 +23,10 @@ CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50),
     amount DECIMAL (10,2),
-    type VARCHAR(10),
-    category_id SERIAL,
-    wallet_id SERIAL,
+    type BOOLEAN,
     timestamps TIMESTAMP,
+    category_id SERIAL,
+    wallet_id SERIAL,   
     FOREIGN KEY (category_id) REFERENCES categories(id),
     FOREIGN KEY (wallet_id) REFERENCES wallets(id)
 );

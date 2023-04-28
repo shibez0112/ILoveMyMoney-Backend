@@ -25,6 +25,7 @@ CREATE TABLE transactions (
     amount DECIMAL (10,2),
     type BOOLEAN,
     timestamps TIMESTAMP,
+    description TEXT,
     category_id SERIAL,
     wallet_id SERIAL,   
     FOREIGN KEY (category_id) REFERENCES categories(id),
